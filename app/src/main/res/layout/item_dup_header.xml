@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/surface_variant"
+    android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+    android:layout_marginTop="8dp">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical">
+        <TextView android:id="@+id/tvGroupTitle"
+            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:textSize="13sp" android:textStyle="bold"
+            tools:text="📷 Similar Photos (3 copies)"/>
+        <TextView android:id="@+id/tvSaved"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textSize="12sp" android:textColor="@color/success" android:textStyle="bold"
+            tools:text="Saves 4.1 MB"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:layout_marginTop="6dp" android:gravity="center_vertical">
+        <TextView android:id="@+id/tvMatchBadge"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge_rounded"
+            android:paddingHorizontal="8dp" android:paddingVertical="2dp"
+            android:textSize="10sp" android:textColor="@android:color/white" android:textStyle="bold"
+            tools:text="EXACT"/>
+        <TextView android:id="@+id/tvSimilarity"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_similarity_pill"
+            android:paddingHorizontal="8dp" android:paddingVertical="2dp"
+            android:textSize="11sp" android:textColor="@color/primary"
+            tools:text="98% similar"/>
+        <TextView android:id="@+id/tvConfidence"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_confidence_pill"
+            android:paddingHorizontal="8dp" android:paddingVertical="2dp"
+            android:textSize="11sp" android:textStyle="bold"
+            tools:text="SAFE 97%"/>
+        <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+        <TextView android:id="@+id/btnCompare"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="🔍 Compare" android:textSize="11sp" android:textColor="@color/primary"
+            android:textStyle="bold" android:padding="4dp" android:visibility="gone"
+            tools:visibility="visible"/>
+    </LinearLayout>
+</LinearLayout>

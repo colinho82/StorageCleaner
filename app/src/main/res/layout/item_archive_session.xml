@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:background="@color/surface_variant"
+    android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+    android:layout_marginTop="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical">
+        <TextView android:id="@+id/tvSessionFolder"
+            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:textSize="13sp" android:textStyle="bold"
+            android:maxLines="1" android:ellipsize="middle"
+            tools:text="📦 Archive_20260614_103000"/>
+    </LinearLayout>
+
+    <TextView android:id="@+id/tvSessionMeta"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textSize="11sp" android:textColor="@color/text_secondary"
+        tools:text="12 file(s) · 84.5 MB"/>
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:layout_marginTop="6dp">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOpenFolder"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+            android:text="📂 Open folder" android:textSize="11sp"
+            app:cornerRadius="10dp" android:layout_marginEnd="6dp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRestoreAll"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+            android:text="↩️ Restore all" android:textSize="11sp"
+            app:cornerRadius="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

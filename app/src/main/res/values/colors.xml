@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#2563EB</color>
+    <color name="primary_dark">#1E40AF</color>
+    <color name="background">#F5F6FA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#EEF1F6</color>
+    <color name="text_primary">#1A1D29</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="success">#16A34A</color>
+    <color name="warning">#D97706</color>
+    <color name="error">#DC2626</color>
+    <color name="archive_color">#7C3AED</color>
+    <color name="badge_original">#16A34A</color>
+    <color name="badge_copy">#D97706</color>
+    <color name="confidence_safe">#16A34A</color>
+    <color name="confidence_review">#D97706</color>
+    <color name="confidence_manual">#DC2626</color>
+    <color name="selected_bg">#1A2563EB</color>
+    <color name="white">#FFFFFF</color>
+</resources>

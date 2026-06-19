@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="12dp">
+
+        <TextView android:id="@+id/tvSimilarityHeader"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center" android:textSize="16sp" android:textStyle="bold"
+            android:textColor="@color/primary" android:layout_marginBottom="12dp"
+            tools:text="92% Similar"/>
+
+        <!-- Side by side images -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="260dp"
+            android:orientation="horizontal">
+            <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                android:orientation="vertical" android:layout_marginEnd="4dp">
+                <ImageView android:id="@+id/ivImageA"
+                    android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+                    android:scaleType="centerCrop" android:background="@color/surface_variant"
+                    android:contentDescription="@null"/>
+                <TextView android:id="@+id/tvLabelA"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="11sp" android:textStyle="bold" android:gravity="center"
+                    android:background="@color/badge_original" android:textColor="@android:color/white"
+                    android:padding="6dp" tools:text="KEEP\nIMG_001.jpg"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"
+                android:orientation="vertical" android:layout_marginStart="4dp">
+                <ImageView android:id="@+id/ivImageB"
+                    android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+                    android:scaleType="centerCrop" android:background="@color/surface_variant"
+                    android:contentDescription="@null"/>
+                <TextView android:id="@+id/tvLabelB"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="11sp" android:textStyle="bold" android:gravity="center"
+                    android:background="@color/badge_copy" android:textColor="@android:color/white"
+                    android:padding="6dp" tools:text="COPY\nIMG_001_copy.jpg"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Comparison table -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            app:cardCornerRadius="14dp"
+            android:layout_marginTop="12dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="14dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="" android:textSize="12sp"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="A (Keep)" android:textSize="12sp" android:textStyle="bold" android:gravity="center"
+                        android:textColor="@color/badge_original"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="B (Copy)" android:textSize="12sp" android:textStyle="bold" android:gravity="center"
+                        android:textColor="@color/badge_copy"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/rowResolution" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:paddingVertical="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:textColor="@color/text_secondary" tools:text="Resolution"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:gravity="center" tools:text="4032×3024"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:gravity="center" tools:text="1920×1080"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/rowSize" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:paddingVertical="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:textColor="@color/text_secondary" tools:text="File Size"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:gravity="center" tools:text="4.2 MB"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:gravity="center" tools:text="1.1 MB"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/rowDate" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:paddingVertical="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:textColor="@color/text_secondary" tools:text="Date Modified"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:gravity="center" tools:text="28 Apr 2026"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:gravity="center" tools:text="12 Mar 2026"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/rowFolder" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:paddingVertical="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:textColor="@color/text_secondary" tools:text="Folder"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:gravity="center" android:maxLines="1" android:ellipsize="middle" tools:text="Camera"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:textSize="12sp" android:gravity="center" android:maxLines="1" android:ellipsize="middle" tools:text="WhatsApp Images"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:textSize="11sp" android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:text="💡 Tip: pinch-zoom and swipe comparison are coming in a future update."/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

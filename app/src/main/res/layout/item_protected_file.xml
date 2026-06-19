@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal" android:background="@color/surface"
+    android:paddingHorizontal="12dp" android:paddingVertical="10dp"
+    android:gravity="center_vertical">
+
+    <ImageView android:id="@+id/ivIcon"
+        android:layout_width="36dp" android:layout_height="36dp"
+        android:padding="6dp" android:background="@color/surface_variant"
+        app:tint="@color/primary"
+        android:contentDescription="@null"/>
+
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1" android:orientation="vertical"
+        android:layout_marginStart="10dp">
+        <TextView android:id="@+id/tvFileName"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="13sp" android:textStyle="bold" android:maxLines="1" android:ellipsize="middle"
+            tools:text="Passport_Scan.pdf"/>
+        <TextView android:id="@+id/tvFilePath"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="10sp" android:textColor="@color/text_secondary"
+            android:maxLines="1" android:ellipsize="start"
+            tools:text="/storage/emulated/0/Documents/Passport_Scan.pdf"/>
+        <TextView android:id="@+id/tvAddedAt"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="10sp" android:textColor="@color/text_secondary"
+            tools:text="Protected 14 Jun 2026"/>
+    </LinearLayout>
+
+    <ImageView android:id="@+id/btnUnprotect"
+        android:layout_width="32dp" android:layout_height="32dp"
+        android:padding="6dp" android:src="@drawable/ic_warning"
+        app:tint="@color/error"
+        android:layout_marginStart="6dp" android:contentDescription="Remove protection"/>
+
+</LinearLayout>

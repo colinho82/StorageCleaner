@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="24dp">
+
+        <!-- ══════════════════════════════════════════════════════════ -->
+        <!-- ACCORDION 1: FOLDER SELECTION                             -->
+        <!-- ══════════════════════════════════════════════════════════ -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="@color/surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Accordion header -->
+                <LinearLayout
+                    android:id="@+id/headerFolders"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="14dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="📁 Select Folders"
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+                    <ImageView
+                        android:id="@+id/ivFolderChevron"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_folder"
+                        android:rotation="180"
+                        app:tint="@color/text_secondary"
+                        android:contentDescription="@null"/>
+                </LinearLayout>
+
+                <!-- Accordion content -->
+                <LinearLayout
+                    android:id="@+id/folderContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <!-- Tab layout -->
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp">
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📷 Photos"/>
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📄 Documents"/>
+                    </com.google.android.material.tabs.TabLayout>
+
+                    <!-- Select / Clear All -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="12dp"
+                        android:paddingTop="4dp">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSelectAll"
+                            style="@style/Widget.Material3.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="Select All"
+                            android:textSize="12sp"
+                            app:cornerRadius="10dp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnClearAll"
+                            style="@style/Widget.Material3.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="Clear All"
+                            android:textSize="12sp"
+                            app:cornerRadius="10dp"/>
+                    </LinearLayout>
+
+                    <!-- Folder list -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerFolders"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxHeight="300dp"
+                        android:nestedScrollingEnabled="false"/>
+
+                    <TextView
+                        android:id="@+id/tvEmpty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:textSize="13sp"
+                        android:textColor="@color/text_secondary"
+                        android:text="No folders found"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/tvHint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="14dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary"/>
+
+                    <!-- Scan progress -->
+                    <LinearLayout
+                        android:id="@+id/scanProgressGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="14dp"
+                        android:visibility="gone">
+                        <TextView
+                            android:id="@+id/tvScanPhase"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            tools:text="Scanning images…"/>
+                        <ProgressBar
+                            android:id="@+id/scanProgressBar"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"/>
+                        <TextView
+                            android:id="@+id/tvScanFile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:textColor="@color/text_secondary"
+                            android:maxLines="1"
+                            android:ellipsize="middle"
+                            tools:text="IMG_20260101_120000.jpg"/>
+                    </LinearLayout>
+
+                    <!-- Scan buttons -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnQuickScan"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:text="⚡ Quick"
+                            android:textSize="13sp"
+                            app:cornerRadius="12dp"
+                            android:layout_marginEnd="8dp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnStartScan"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:text="Select folders to scan"
+                            android:textSize="13sp"
+                            android:enabled="false"
+                            app:cornerRadius="12dp"/>
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ══════════════════════════════════════════════════════════ -->
+        <!-- ACCORDION 2: SCAN RESULTS                                 -->
+        <!-- ══════════════════════════════════════════════════════════ -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/accordionResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="@color/surface"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Accordion header -->
+                <LinearLayout
+                    android:id="@+id/headerResults"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="14dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <TextView
+                        android:id="@+id/headerResultsTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="📊 Scan Results"
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+                    <ImageView
+                        android:id="@+id/ivResultsChevron"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_duplicates"
+                        android:rotation="180"
+                        app:tint="@color/text_secondary"
+                        android:contentDescription="@null"/>
+                </LinearLayout>
+
+                <!-- Results content -->
+                <LinearLayout
+                    android:id="@+id/resultsContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <!-- Summary row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="14dp"
+                        android:paddingTop="8dp">
+                        <TextView
+                            android:id="@+id/tvGroupCount"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            tools:text="12 group(s) · 34 files"/>
+                        <TextView
+                            android:id="@+id/tvLastScan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:textColor="@color/text_secondary"
+                            tools:text="Last scan: 14 Jun, 18:31"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvTotalWasted"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="14dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="13sp"
+                        android:textColor="@color/success"
+                        android:textStyle="bold"
+                        tools:text="💾 3.2 GB reclaimable"/>
+
+                    <!-- Filter chips -->
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupFilter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="12dp"
+                            app:singleSelection="true"
+                            app:selectionRequired="true"/>
+                    </HorizontalScrollView>
+
+                    <!-- Sort chips -->
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupSort"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="12dp"
+                            android:layout_marginBottom="4dp"
+                            app:singleSelection="true"
+                            app:selectionRequired="true"/>
+                    </HorizontalScrollView>
+
+                    <!-- Results list -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerResults"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"/>
+
+                    <TextView
+                        android:id="@+id/tvResultsEmpty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:text="🎉 No duplicates found!"
+                        android:visibility="gone"/>
+
+                    <!-- Bottom action bar -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnRescan"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:text="🔄 Rescan"
+                            android:textSize="13sp"
+                            app:cornerRadius="12dp"
+                            android:layout_marginEnd="8dp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnMoveToArchive"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:text="✂️ Move to Archive (0)"
+                            android:textSize="13sp"
+                            android:enabled="false"
+                            app:cornerRadius="12dp"/>
+                    </LinearLayout>
+
+                    <!-- Processing overlay -->
+                    <LinearLayout
+                        android:id="@+id/progressOverlay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:visibility="gone">
+                        <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/tvProgressMsg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:textSize="13sp"
+                            tools:text="Verifying &amp; moving 5 / 12…"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

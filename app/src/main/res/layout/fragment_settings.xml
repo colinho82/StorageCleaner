@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:paddingBottom="24dp">
+
+        <!-- Detection Settings -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="14dp" app:cardBackgroundColor="@color/surface">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="🔍 Detection Settings" android:textSize="14sp" android:textStyle="bold"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginTop="14dp" android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="Image Similarity Threshold" android:textSize="13sp"/>
+                    <TextView android:id="@+id/tvImageThresholdValue"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textSize="13sp" android:textStyle="bold" android:textColor="@color/primary"
+                        tools:text="90%"/>
+                </LinearLayout>
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderImageThreshold"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:valueFrom="70" android:valueTo="100" android:stepSize="1"/>
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Higher = only near-identical images are grouped. Lower = catches more edited copies and screenshots, but may need more manual review."
+                    android:textSize="11sp" android:textColor="@color/text_secondary"/>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginTop="18dp" android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="Document Similarity Threshold" android:textSize="13sp"/>
+                    <TextView android:id="@+id/tvDocThresholdValue"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:textSize="13sp" android:textStyle="bold" android:textColor="@color/primary"
+                        tools:text="90%"/>
+                </LinearLayout>
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderDocThreshold"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:valueFrom="70" android:valueTo="100" android:stepSize="1"/>
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Controls how similar two documents' text content must be to be flagged as a match."
+                    android:textSize="11sp" android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Protected Files -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp" android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp" app:cardBackgroundColor="@color/surface">
+            <LinearLayout android:id="@+id/rowProtectedFiles"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:padding="14dp" android:gravity="center_vertical"
+                android:clickable="true" android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+                <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                    android:src="@drawable/ic_shield" app:tint="@color/primary"
+                    android:contentDescription="@null"/>
+                <TextView
+                    android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:text="🛡️ Protected Files" android:textSize="14sp" android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="›" android:textSize="18sp" android:textColor="@color/text_secondary"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Notifications -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp" android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp" app:cardBackgroundColor="@color/surface">
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="14dp">
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="🔔 Notifications" android:textSize="14sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvNotificationStatus"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textSize="12sp" android:textColor="@color/text_secondary"
+                    tools:text="✅ Notifications enabled"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEnableNotifications"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content" android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Enable notifications" android:textSize="12sp"
+                    app:cornerRadius="10dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Ignore Rules -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp" android:layout_marginBottom="12dp"
+            app:cardCornerRadius="14dp" app:cardBackgroundColor="@color/surface">
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="14dp">
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:text="🚫 Ignore Rules" android:textSize="14sp" android:textStyle="bold"/>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddIgnoreRule"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content" android:layout_height="36dp"
+                        android:text="+ Add folder" android:textSize="12sp"
+                        app:cornerRadius="10dp"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Enabled rules exclude matching files and folders from future scans."
+                    android:textSize="11sp" android:textColor="@color/text_secondary"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerIgnoreRules"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Archive Info -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            app:cardCornerRadius="14dp" app:cardBackgroundColor="@color/surface">
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="14dp">
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="📦 Archive Location" android:textSize="14sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvArchiveLocation"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textSize="11sp" android:textColor="@color/text_secondary"
+                    tools:text="/storage/emulated/0/Documents/StorageCleaner"/>
+                <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Archived files are copied here and verified before the original is moved to the Recycle Bin. Restore anytime from the Archive tab."
+                    android:textSize="11sp" android:textColor="@color/text_secondary"/>
+
+                <TextView android:id="@+id/tvArchiveAccessWarning"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="⚠️ &quot;All files access&quot; is required on Android 11+ to move files into this folder. Without it, Move to Archive may fail."
+                    android:textSize="11sp" android:textColor="@color/warning"
+                    android:visibility="gone" tools:visibility="visible"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGrantAllFilesAccess"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content" android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Grant all files access" android:textSize="12sp"
+                    app:cornerRadius="10dp"
+                    android:visibility="gone" tools:visibility="visible"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

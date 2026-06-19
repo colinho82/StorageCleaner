@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+
+            <!-- Storage usage card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp" app:cardBackgroundColor="@color/primary"
+                android:layout_marginBottom="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="📊 Storage Overview" android:textColor="@android:color/white"
+                        android:textSize="14sp" android:textStyle="bold"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:layout_marginTop="12dp"
+                        android:gravity="bottom">
+                        <TextView android:id="@+id/tvUsedStorage"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:textColor="@android:color/white" android:textSize="32sp" android:textStyle="bold"
+                            tools:text="48.2 GB"/>
+                        <TextView android:id="@+id/tvTotalStorage"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp" android:layout_marginBottom="4dp"
+                            android:textColor="#CCFFFFFF" android:textSize="14sp" tools:text="of 128 GB"/>
+                    </LinearLayout>
+                    <ProgressBar android:id="@+id/storageProgress"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent" android:layout_height="8dp"
+                        android:layout_marginTop="10dp" android:max="100" android:progress="40"
+                        android:progressTint="@android:color/white"
+                        android:progressBackgroundTint="#33FFFFFF"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:layout_marginTop="6dp">
+                        <TextView android:id="@+id/tvUsedPct"
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:textColor="#CCFFFFFF" android:textSize="12sp"
+                            tools:text="38% used"/>
+                        <TextView android:id="@+id/tvFreeStorage"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:textColor="#CCFFFFFF" android:textSize="12sp" tools:text="79.8 GB free"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Potential recovery card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp" app:cardBackgroundColor="@color/success"
+                android:layout_marginBottom="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:padding="18dp" android:gravity="center_vertical">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="♻️ Potential Recovery" android:textColor="@android:color/white"
+                            android:textSize="13sp"/>
+                        <TextView android:id="@+id/tvPotentialRecovery"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:textColor="@android:color/white" android:textSize="24sp" android:textStyle="bold"
+                            android:layout_marginTop="2dp" tools:text="3.2 GB"/>
+                        <TextView android:id="@+id/tvLastScan"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:textColor="#CCFFFFFF" android:textSize="11sp" android:layout_marginTop="2dp"
+                            tools:text="Last scan: 28 Apr 2026, 14:32"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Breakdown card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp" app:cardBackgroundColor="@color/surface"
+                android:layout_marginBottom="12dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Storage Breakdown" android:textSize="14sp" android:textStyle="bold"
+                        android:layout_marginBottom="8dp"/>
+                    <LinearLayout android:id="@+id/breakdownContainer"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Quick actions -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Quick Actions" android:textSize="14sp" android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStartScan"
+                android:layout_width="match_parent" android:layout_height="56dp"
+                android:text="🔍 Start Scan" android:textSize="15sp"
+                app:cornerRadius="14dp" android:layout_marginBottom="10dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnViewDuplicates"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent" android:layout_height="56dp"
+                android:text="🔍 View Duplicates" android:textSize="14sp"
+                app:cornerRadius="14dp" android:layout_marginBottom="10dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnViewArchive"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp" android:layout_height="50dp" android:layout_weight="1"
+                    android:text="📦 Archive" android:textSize="12sp"
+                    app:cornerRadius="14dp" android:layout_marginEnd="6dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnScanHistory"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp" android:layout_height="50dp" android:layout_weight="1"
+                    android:text="🕓 History" android:textSize="12sp"
+                    app:cornerRadius="14dp" android:layout_marginHorizontal="3dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStorageAnalytics"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp" android:layout_height="50dp" android:layout_weight="1"
+                    android:text="📈 Analytics" android:textSize="12sp"
+                    app:cornerRadius="14dp" android:layout_marginStart="6dp"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="24dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

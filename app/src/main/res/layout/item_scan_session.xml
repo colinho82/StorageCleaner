@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp" android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp" app:cardElevation="0dp" app:cardBackgroundColor="@color/surface">
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:id="@+id/tvDate"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:textSize="13sp" android:textStyle="bold"
+                tools:text="14 Jun 2026, 10:30"/>
+            <TextView android:id="@+id/tvScanType"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="11sp" android:textColor="@color/primary"
+                tools:text="🔍 Full Scan"/>
+        </LinearLayout>
+
+        <TextView android:id="@+id/tvStats"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="11sp" android:textColor="@color/text_secondary"
+            tools:text="1,204 files scanned · 12 group(s) found · 24.6s"/>
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginTop="6dp">
+            <TextView android:id="@+id/tvRecoverable"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:textSize="11sp" android:textColor="@color/warning"
+                tools:text="Recoverable: 3.2 GB"/>
+            <TextView android:id="@+id/tvReclaimed"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:gravity="end"
+                android:textSize="11sp" android:textColor="@color/success"
+                tools:text="✅ Reclaimed: 2.1 GB"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
